@@ -19,7 +19,8 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.5.3",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "node-windows": "^1.0.0-beta.8"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

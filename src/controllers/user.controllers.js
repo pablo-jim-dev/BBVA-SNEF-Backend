@@ -4,17 +4,18 @@ import { JWT_SECRET } from '../config.js';
 
 export const register = async (req, res) => {
     const { name, email, activity } = req.body;
+    const userActivity = Object.values(activity).length === 0;
     try {
         const user = await User.findOne({ email });
-        if(!user) return res.status(404).json({ message: '¡Jugador no encontrado! Regístrate para continuar.' });
-        if (name === '' && activity === Object.values(activity).length === 0 && !user) return res.status(404).json({ message: '¡Jugador no encontrado! Regístrate para continuar.' });
+        if (!user && name == '' && !userActivity) return res.status(404).json({ message: '¡Jugador no encontrado! Regístrate para continuar.' });
         if (user) return res.status(200).json({ message: `¡Bienvenido de vuelta ${user.name}!`, user });
 
         const newUser = new User({ name, email, activity });
         await newUser.save();
         res.status(201).json({ message: `¡Bienvenido ${newUser.name}!`, user: newUser });
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        console.log(error);
+        res.status(400).json({ message: '¡Jugador no encontrado! Regístrate para continuar.' });
     }
 }
 

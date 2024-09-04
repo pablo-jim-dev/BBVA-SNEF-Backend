@@ -11,9 +11,10 @@ const userSchema = new Schema({
         required: true,
         unique: true
     },
-    activity: {
-        type: String,
-        required: true
+    activities: {
+        type: Array,
+        required: true,
+        default: []
     },
     giveaway: {
         type: Boolean,

@@ -14,6 +14,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors({
     origin: [
+        'http://192.168.0.101:5174',
         'http://192.168.0.101:4173',
         'http://192.168.0.101:5173',
         'http://192.168.0.102:4173',
